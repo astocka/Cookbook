@@ -12,5 +12,6 @@ namespace Cookbook.Models
         public string CategoryName { get; set; }
 
         public ICollection<Recipe> Recipes { get; set; }
+        public ICollection<Subcategory> Subcategories { get; set; }
     }
 }

@@ -3,4 +3,5 @@ export interface Category {
     categoryName: string;
 
     recipes: Object[];
+    subcategories: Object[];
 }

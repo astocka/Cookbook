@@ -16,5 +16,6 @@ namespace Cookbook.Data
 
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Subcategory> Subcategories { get; set; }
     }
 }
