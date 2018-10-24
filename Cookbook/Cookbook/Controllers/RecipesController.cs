@@ -15,7 +15,6 @@ namespace Cookbook.Controllers
     public class RecipesController : ControllerBase
     {
         private readonly IRecipeRepository _repository;
-
         public RecipesController(IRecipeRepository repository)
         {
             _repository = repository;
@@ -69,7 +68,7 @@ namespace Cookbook.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                    throw new System.Exception($"Updating user {id} failed on save.");
+                throw new System.Exception($"Updating user {id} failed on save.");
             }
 
             return NoContent();

@@ -34,6 +34,7 @@ namespace Cookbook
             });
             services.AddCors();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

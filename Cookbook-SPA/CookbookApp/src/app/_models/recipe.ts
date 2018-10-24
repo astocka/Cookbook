@@ -5,4 +5,6 @@ export interface Recipe {
     time: number;
     portion: number;
 
+    categoryId: number;
+
 }
