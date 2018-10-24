@@ -23,9 +23,10 @@ namespace Cookbook.Controllers
 
         // GET: api/Recipes
         [HttpGet]
-        public IEnumerable<Recipe> GetRecipes()
+        public async Task<IActionResult> GetRecipes()
         {
-            return _context.Recipes;
+            var recipes = await _context.Recipes.ToListAsync();
+            return Ok(recipes);
         }
 
         // GET: api/Recipes/5
