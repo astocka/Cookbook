@@ -14,18 +14,18 @@ namespace Cookbook.Controllers
     [ApiController]
     public class RecipesController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IRecipeRepository _repository;
 
-        public RecipesController(DataContext context)
+        public RecipesController(IRecipeRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         // GET: api/Recipes
         [HttpGet]
         public async Task<IActionResult> GetRecipes()
         {
-            var recipes = await _context.Recipes.ToListAsync();
+            var recipes = await _repository.GetRecipes();
             return Ok(recipes);
         }
 
@@ -38,7 +38,7 @@ namespace Cookbook.Controllers
                 return BadRequest(ModelState);
             }
 
-            var recipe = await _context.Recipes.FindAsync(id);
+            var recipe = await _repository.GetRecipe(id);
 
             if (recipe == null)
             {
@@ -62,22 +62,14 @@ namespace Cookbook.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(recipe).State = EntityState.Modified;
-
+            _repository.Update(recipe);
             try
             {
-                await _context.SaveChangesAsync();
+                await _repository.SaveAll();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                    throw new System.Exception($"Updating user {id} failed on save.");
             }
 
             return NoContent();
@@ -92,8 +84,8 @@ namespace Cookbook.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Recipes.Add(recipe);
-            await _context.SaveChangesAsync();
+            _repository.Add(recipe);
+            await _repository.SaveAll();
 
             return CreatedAtAction("GetRecipe", new { id = recipe.Id }, recipe);
         }
@@ -107,21 +99,15 @@ namespace Cookbook.Controllers
                 return BadRequest(ModelState);
             }
 
-            var recipe = await _context.Recipes.FindAsync(id);
+            var recipe = await _repository.GetRecipe(id);
             if (recipe == null)
             {
                 return NotFound();
             }
-
-            _context.Recipes.Remove(recipe);
-            await _context.SaveChangesAsync();
+            _repository.Delete(recipe);
+            await _repository.SaveAll();
 
             return Ok(recipe);
-        }
-
-        private bool RecipeExists(int id)
-        {
-            return _context.Recipes.Any(e => e.Id == id);
         }
     }
 }
