@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
+declare var $: any;
 
 @Component({
   selector: 'app-nav',
@@ -11,6 +12,10 @@ export class NavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggleNavbar() {
+    $('#navbarCollapse').toggle();
   }
 
 }
