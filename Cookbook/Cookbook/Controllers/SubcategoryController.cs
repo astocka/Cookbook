@@ -33,7 +33,6 @@ namespace Cookbook.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             var subcategory = await _repo.GetSubcategory(id);
 
             if (subcategory == null)

@@ -29,13 +29,13 @@ namespace Cookbook.Data
 
         public async Task<Recipe> GetRecipe(int id)
         {
-            var recipe = await _dataContext.Recipes.FirstOrDefaultAsync(r => r.Id == id);
+            var recipe = await _dataContext.Recipes.Include(c => c.Category).ThenInclude(s => s.Subcategories).FirstOrDefaultAsync(r => r.Id == id);
             return recipe;
         }
 
         public async Task<IEnumerable<Recipe>> GetRecipes()
         {
-            return await _dataContext.Recipes.ToListAsync();
+            return await _dataContext.Recipes.Include(c => c.Category).ThenInclude(s => s.Subcategories).ToListAsync();
         }
 
         public async Task<bool> SaveAll()

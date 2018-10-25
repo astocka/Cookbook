@@ -13,6 +13,8 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
 import { RecipeCategoryComponent } from './recipe-category/recipe-category.component';
 import { RecipeSubcategoryComponent } from './recipe-subcategory/recipe-subcategory.component';
 import { CategoryService } from './_services/category.service';
+import { SubcategoryService } from './_services/subcategory.service';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CategoryService } from './_services/category.service';
     RecipeListComponent,
     RecipeCardComponent,
     RecipeCategoryComponent,
-    RecipeSubcategoryComponent
+    RecipeSubcategoryComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { CategoryService } from './_services/category.service';
   ],
   providers: [
     RecipeService,
-    CategoryService
+    CategoryService,
+    SubcategoryService
   ],
   bootstrap: [AppComponent]
 })
