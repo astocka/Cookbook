@@ -4,7 +4,10 @@ export interface Recipe {
     description: string;
     time: number;
     portion: number;
+    favourite: boolean;
+    rating: number;
 
     categoryId: number;
+    subcategoryId: number;
 
 }

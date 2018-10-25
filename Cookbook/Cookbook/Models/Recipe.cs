@@ -16,9 +16,15 @@ namespace Cookbook.Models
         public string Description { get; set; }
         public decimal Time { get; set; }
         public int Portion { get; set; }
+        public bool Favourite { get; set; }
+        public int Rating { get; set; }
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         public Category Category { get; set; }
+
+        public int SubcategoryId { get; set; }
+        [ForeignKey("SubcategoryId")]
+        public Subcategory Subcategory { get; set; }
     }
 }
