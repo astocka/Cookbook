@@ -10,6 +10,9 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { appRoutes } from './routes';
 import { RecipeService } from './_services/recipe.service';
 import { RecipeCardComponent } from './recipe-card/recipe-card.component';
+import { RecipeCategoryComponent } from './recipe-category/recipe-category.component';
+import { RecipeSubcategoryComponent } from './recipe-subcategory/recipe-subcategory.component';
+import { CategoryService } from './_services/category.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
     HomeComponent,
     NavComponent,
     RecipeListComponent,
-    RecipeCardComponent
+    RecipeCardComponent,
+    RecipeCategoryComponent,
+    RecipeSubcategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,8 @@ import { RecipeCardComponent } from './recipe-card/recipe-card.component';
     RouterModule.forRoot(appRoutes),
   ],
   providers: [
-    RecipeService
+    RecipeService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
