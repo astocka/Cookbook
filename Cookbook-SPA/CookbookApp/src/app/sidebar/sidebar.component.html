@@ -3,11 +3,12 @@
     <hr>
     <h4>Categories</h4>
     <div *ngFor="let category of categories$">
-        <a class="nav-link" href="#">>> {{category.categoryName}}</a>
+        <a class="nav-link" [routerLink]="['/recipes/']" [queryParams]="{ category: category.categoryName}">>> {{category.categoryName}}</a>
+
     </div>
     <hr>
     <h4>Subcategories</h4>
     <div *ngFor="let subcategory of subcategories$">
-        <a class="nav-link" href="#">>> {{subcategory.subcategoryName}}</a>
+        <a class="nav-link" [routerLink]="['/recipes/']" [queryParams]="{ subcategory: subcategory.subcategoryName}">>> {{subcategory.subcategoryName}}</a>
     </div>
 </nav>

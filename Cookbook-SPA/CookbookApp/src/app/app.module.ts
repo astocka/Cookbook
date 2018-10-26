@@ -15,6 +15,7 @@ import { RecipeSubcategoryComponent } from './recipe-subcategory/recipe-subcateg
 import { CategoryService } from './_services/category.service';
 import { SubcategoryService } from './_services/subcategory.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     RecipeCardComponent,
     RecipeCategoryComponent,
     RecipeSubcategoryComponent,
-    SidebarComponent
+    SidebarComponent,
+    RecipeDetailsComponent
   ],
   imports: [
     BrowserModule,

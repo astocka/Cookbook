@@ -42,5 +42,19 @@ namespace Cookbook.Data
         {
             return await _dataContext.SaveChangesAsync() > 0;
         }
+
+        // public async Task<List<Recipe>> GetCategoryRecipes(string category)
+        // {
+        //    var categoryRecipes = await _dataContext.Recipes.Include(c => c.Category).ToListAsync();
+        //    List<Recipe> result = new List<Recipe>();
+        //    foreach(var x in categoryRecipes)
+        //    {
+        //        if(x.Category.CategoryName == category)
+        //        {
+        //            result.Add(x);
+        //        }
+        //    }
+        //    return result;
+        // }
     }
 }
