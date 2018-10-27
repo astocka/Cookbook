@@ -1,3 +1,15 @@
-<p>
-    home works!
-</p>
+<div>
+    <img src="../../assets/icons8-food-64.png" class="float-left mr-3">
+    <h1 class="display-4 mb-4"><span class="text-warning"> Cook</span>book</h1>
+    <hr>
+    <h2>Menu</h2>
+    <h4 class="mt-4">Categories</h4>
+    <div *ngFor="let category of categories$">
+        <a class="nav-link" routerLink="/category/{{category.categoryName}}">>> {{category.categoryName}}</a>
+
+    </div>
+    <h4 class="mt-4">Subcategories</h4>
+    <div *ngFor="let subcategory of subcategories$">
+        <a class="nav-link" routerLink="/subcategory/{{subcategory.subcategoryName}}">>> {{subcategory.subcategoryName}}</a>
+    </div>
+</div>

@@ -8,8 +8,7 @@ import { Recipe } from '../_models/recipe';
 })
 export class RecipeService {
   url = environment.apiUrl;
-  recipe: Recipe;
-  rec: Object;
+  categoryName: string;
 
 constructor(private http: HttpClient) { }
 

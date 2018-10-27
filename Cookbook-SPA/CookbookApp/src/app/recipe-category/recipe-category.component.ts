@@ -11,12 +11,12 @@ import { RecipeService } from '../_services/recipe.service';
 export class RecipeCategoryComponent implements OnInit {
   categories$: Object;
   recipes$: Object;
-  categoryName: string;
+  id: number;
 
   constructor(private categoryService: CategoryService, private recipeService: RecipeService, private recipes: RecipeListComponent) { }
 
   ngOnInit() {
-    this.recipeService.getCategoryRecipes(this.categoryName).subscribe(data => (this.recipes$ = data));
+    this.recipeService.getCategoryRecipes(this.id).subscribe(data => (this.recipes$ = data));
 
   }
 
