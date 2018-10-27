@@ -24,4 +24,8 @@ getCategoryRecipes(categoryName) {
   return this.http.get(this.url + 'recipes/' + categoryName);
 }
 
+// getFavRecipes() {
+//   return this.http.get(this.url + 'recipes')
+// }
+
 }
