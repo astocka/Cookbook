@@ -20,8 +20,12 @@ getRecipe(id) {
   return this.http.get(this.url + 'recipes/' + id);
 }
 
-getCategoryRecipes(categoryName) {
-  return this.http.get(this.url + 'recipes/' + categoryName);
+// getCategoryRecipes(categoryName) {
+//   return this.http.get(this.url + 'recipes/' + categoryName);
+// }
+
+getCategoryRecipes(id) {
+  return this.http.get(this.url + 'recipes/' + id);
 }
 
 // getFavRecipes() {

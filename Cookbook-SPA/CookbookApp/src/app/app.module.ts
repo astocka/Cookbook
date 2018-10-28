@@ -17,6 +17,10 @@ import { SubcategoryService } from './_services/subcategory.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { RecipeFavComponent } from './recipe-fav/recipe-fav.component';
+import { ManageRecipesComponent } from './manage-recipes/manage-recipes.component';
+import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
+import { ManageSubcategoriesComponent } from './manage-subcategories/manage-subcategories.component';
+import { ManageMainComponent } from './manage-main/manage-main.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { RecipeFavComponent } from './recipe-fav/recipe-fav.component';
     RecipeSubcategoryComponent,
     SidebarComponent,
     RecipeDetailsComponent,
-    RecipeFavComponent
+    RecipeFavComponent,
+    ManageRecipesComponent,
+    ManageCategoriesComponent,
+    ManageSubcategoriesComponent,
+    ManageMainComponent
   ],
   imports: [
     BrowserModule,

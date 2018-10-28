@@ -1,0 +1,36 @@
+<div>
+    <img src="../../assets/icons8-maintenance-64.png" class="float-left mr-3">
+    <h1 class="display-4 mb-4"><span class="text-warning"> Manage</span>Recipes</h1>
+    <hr>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Category</th>
+                <th scope="col">Subcategory</th>
+                <th scope="col">Name</th>
+                <th scope="col">Time</th>
+                <th scope="col">Portion</th>
+                <th scope="col">Favourite</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Description</th>
+                <th scope="col" colspan="2">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let recipe of recipes$">
+                <td>{{recipe.id}}</td>
+                <td>{{recipe.category.categoryName}}</td>
+                <td>{{recipe.subcategory.subcategoryName}}</td>
+                <td>{{recipe.name}}</td>
+                <td>{{recipe.time}}</td>
+                <td>{{recipe.portion}}</td>
+                <td>{{recipe.favourite}}</td>
+                <td>{{recipe.rating}}</td>
+                <td><a class="link" href="#">Description</a></td>
+                <td><i class="fa fa-cog"></i></td>
+                <td><i class="fa fa-trash-o"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

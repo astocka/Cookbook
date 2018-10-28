@@ -5,11 +5,14 @@
     <h2>Menu</h2>
     <h4 class="mt-4">Categories</h4>
     <div *ngFor="let category of categories$">
-        <a class="nav-link" routerLink="/category/{{category.categoryName}}">>> {{category.categoryName}}</a>
+        <!-- <a class="nav-link" routerLink="/category/{{category.id}}">>> {{category.categoryName}}</a> -->
+        <!-- <a class="nav-link" routerLink="/category/{{category.categoryName}}">>> {{category.categoryName}}</a> -->
+        <a class="nav-link" href="#">>> {{category.categoryName}}</a>
 
     </div>
     <h4 class="mt-4">Subcategories</h4>
     <div *ngFor="let subcategory of subcategories$">
-        <a class="nav-link" routerLink="/subcategory/{{subcategory.subcategoryName}}">>> {{subcategory.subcategoryName}}</a>
+        <!-- <a class="nav-link" routerLink="/subcategory/{{subcategory.subcategoryName}}">>> {{subcategory.subcategoryName}}</a> -->
+        <a class="nav-link" href="#">>> {{subcategory.subcategoryName}}</a>
     </div>
 </div>

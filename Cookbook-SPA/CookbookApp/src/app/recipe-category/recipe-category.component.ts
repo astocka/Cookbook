@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../_services/category.service';
-import { RecipeListComponent } from '../recipe-list/recipe-list.component';
 import { RecipeService } from '../_services/recipe.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-category',
@@ -9,14 +8,20 @@ import { RecipeService } from '../_services/recipe.service';
   styleUrls: ['./recipe-category.component.css']
 })
 export class RecipeCategoryComponent implements OnInit {
-  categories$: Object;
-  recipes$: Object;
-  id: number;
+  categoryRecipes$: Object;
+  // id: number;
+  name: Object;
 
-  constructor(private categoryService: CategoryService, private recipeService: RecipeService, private recipes: RecipeListComponent) { }
+  constructor(private recipeService: RecipeService,
+    private route: ActivatedRoute) {
+    this.route.params.subscribe(params => this.categoryRecipes$ = params.name);
+   }
 
   ngOnInit() {
-    this.recipeService.getCategoryRecipes(this.id).subscribe(data => (this.recipes$ = data));
+    // this.recipeService.getCategoryRecipes(this.id).subscribe(data => (this.recipes$ = data));
+    // this.recipeService.getRecipes().subscribe(x => this.recipes$ = x);
+    this.recipeService.getRecipes().subscribe(data => (this.categoryRecipes$ = data));
+
 
   }
 
