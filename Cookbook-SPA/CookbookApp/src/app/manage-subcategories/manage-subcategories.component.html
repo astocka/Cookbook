@@ -1,3 +1,24 @@
-<p>
-  manage-subcategories works!
-</p>
+<div>
+    <img src="../../assets/icons8-maintenance-64.png" class="float-left mr-3">
+    <h1 class="display-4 mb-4"><span class="text-warning"> Manage</span>Subcategories</h1>
+    <hr>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Category</th>
+                <th scope="col">Subcategory</th>
+                <th scope="col" colspan="2">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let subcategory of subcategories$">
+                <td>{{subcategory.id}}</td>
+                <td>{{subcategory.category.categoryName}}</td>
+                <td>{{subcategory.subcategoryName}}</td>
+                <td><i class="fa fa-cog"></i></td>
+                <td><i class="fa fa-trash-o"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

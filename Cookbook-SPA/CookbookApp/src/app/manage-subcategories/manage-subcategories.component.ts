@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SubcategoryService } from '../_services/subcategory.service';
 
 @Component({
   selector: 'app-manage-subcategories',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manage-subcategories.component.css']
 })
 export class ManageSubcategoriesComponent implements OnInit {
+  subcategories$: Object;
 
-  constructor() { }
+  constructor(private subcategoryService: SubcategoryService) { }
 
   ngOnInit() {
+    this.subcategoryService.getSubcategories().subscribe(data => (this.subcategories$ = data));
   }
 
 }

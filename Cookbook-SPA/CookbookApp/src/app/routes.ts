@@ -5,6 +5,9 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { RecipeCategoryComponent } from './recipe-category/recipe-category.component';
 import { RecipeFavComponent } from './recipe-fav/recipe-fav.component';
 import { ManageMainComponent } from './manage-main/manage-main.component';
+import { ManageRecipesComponent } from './manage-recipes/manage-recipes.component';
+import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
+import { ManageSubcategoriesComponent } from './manage-subcategories/manage-subcategories.component';
 
 export const appRoutes: Routes = [
 
@@ -14,6 +17,9 @@ export const appRoutes: Routes = [
     { path: 'category/:name', component: RecipeCategoryComponent },
     // { path: 'category/:id', component: RecipeListComponent },
     { path: 'manage', component: ManageMainComponent },
+    { path: 'manage-recipes', component: ManageRecipesComponent },
+    { path: 'manage-categories', component: ManageCategoriesComponent },
+    { path: 'manage-subcategories', component: ManageSubcategoriesComponent },
     { path: 'fav', component: RecipeFavComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

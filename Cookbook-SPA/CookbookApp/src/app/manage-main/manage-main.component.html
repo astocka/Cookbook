@@ -1,10 +1,99 @@
 <div>
     <img src="../../assets/icons8-maintenance-64.png" class="float-left mr-3">
-    <h1 class="display-4 mb-4"><span class="text-warning"> Manage</span>components</h1>
+    <h1 class="display-4 mb-4"><span class="text-warning"> Manage</span><span id="manage-title">recipes</span></h1>
     <hr>
-    <ul>
-        <li><a class="link" [routerLink]="">Manage Categories</a></li>
-        <li><a class="link" [routerLink]="">Manage Subcategories</a></li>
-        <li><a class="link" [routerLink]="">Manage Recipes</a></li>
+    <ul class="nav nav-pills mb-3 ">
+        <li class="nav-item">
+            <a class="nav-link bg-warning text-light rounded font-weight-bold" (click)="showCategoryTab()">Categories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link bg-warning text-light rounded font-weight-bold" (click)="showSubcategoryTab()">Subcategories</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link bg-warning text-light rounded font-weight-bold" (click)="showRecipeTab()">Recipes</a>
+        </li>
     </ul>
+    <div class="tab-content" id="manageTabContent">
+        <div class="tab-pane fade show" id="manage-categories">
+            <!-- Manage Category -->
+            <div>
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Category</th>
+                            <th scope="col" colspan="2">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let category of categories$">
+                            <td>{{category.id}}</td>
+                            <td>{{category.categoryName}}</td>
+                            <td><i class="fa fa-cog"></i></td>
+                            <td><i class="fa fa-trash-o"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End -->
+        </div>
+        <div class="tab-pane fade show mt-3" id="manage-subcategories">
+            <!-- Manage Subcategories -->
+            <table class="table table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Subcategory</th>
+                        <th scope="col" colspan="2">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let subcategory of subcategories$">
+                        <td>{{subcategory.id}}</td>
+                        <td>{{subcategory.category.categoryName}}</td>
+                        <td>{{subcategory.subcategoryName}}</td>
+                        <td><i class="fa fa-cog"></i></td>
+                        <td><i class="fa fa-trash-o"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- End -->
+        </div>
+        <div class="tab-pane fade show mt-3" id="manage-recipes">
+            <!-- Manage Recipes -->
+            <table class="table-responsive table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Subcategory</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Portion</th>
+                        <th scope="col">Favourite</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Description</th>
+                        <th scope="col" colspan="2">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let recipe of recipes$">
+                        <td>{{recipe.id}}</td>
+                        <td>{{recipe.category.categoryName}}</td>
+                        <td>{{recipe.subcategory.subcategoryName}}</td>
+                        <td>{{recipe.name}}</td>
+                        <td>{{recipe.time}}</td>
+                        <td>{{recipe.portion}}</td>
+                        <td>{{recipe.favourite}}</td>
+                        <td>{{recipe.rating}}</td>
+                        <td><a class="link" href="#">Description</a></td>
+                        <td><i class="fa fa-cog"></i></td>
+                        <td><i class="fa fa-trash-o"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- End -->
+        </div>
+    </div>
 </div>

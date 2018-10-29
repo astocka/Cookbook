@@ -1,3 +1,19 @@
-<p>
-  manage-categories works!
-</p>
+<div>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Category</th>
+                <th scope="col" colspan="2">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories$">
+                <td>{{category.id}}</td>
+                <td>{{category.categoryName}}</td>
+                <td><i class="fa fa-cog"></i></td>
+                <td><i class="fa fa-trash-o"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
