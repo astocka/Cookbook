@@ -36,4 +36,11 @@ error => {
 });
 }
 
+deleteCategory(id: number) {
+  return this.http.delete(this.url + 'category/' + id)
+  .subscribe(data => { console.log('DELETE Request is successfull', data);
+}, error => { console.log('Error', error);
+});
+}
+
 }

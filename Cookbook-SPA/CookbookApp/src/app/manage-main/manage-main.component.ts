@@ -51,4 +51,8 @@ export class ManageMainComponent implements OnInit {
   resetAddCategoryForm(addCategoryForm: NgForm) {
     addCategoryForm.resetForm();
   }
+
+  deleteCategory(id) {
+    this.categoryService.deleteCategory(id);
+  }
 }
