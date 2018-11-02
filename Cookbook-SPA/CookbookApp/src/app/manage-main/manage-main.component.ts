@@ -48,11 +48,22 @@ export class ManageMainComponent implements OnInit {
     this.categoryService.addCategory(addCategoryForm);
   }
 
-  resetAddCategoryForm(addCategoryForm: NgForm) {
-    addCategoryForm.resetForm();
+  resetCategoryForm(categoryForm: NgForm) {
+    categoryForm.resetForm();
   }
 
   deleteCategory(id) {
     this.categoryService.deleteCategory(id);
+  }
+
+  editCategoryOption(id: number, name: string, editCategoryForm: NgForm) {
+    editCategoryForm.resetForm({
+      editId: id,
+      editCategoryName: name
+    });
+  }
+
+  editCategory(editCategoryForm: NgForm) {
+    this.categoryService.editCategory(editCategoryForm);
   }
 }

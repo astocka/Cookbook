@@ -43,4 +43,15 @@ deleteCategory(id: number) {
 });
 }
 
+editCategory(editCategoryForm: NgForm) {
+  return this.http.put(this.url + 'category/' + editCategoryForm.controls['editId'].value,
+  {
+    'Id': editCategoryForm.controls['editId'].value,
+    'CategoryName': editCategoryForm.controls['editCategoryName'].value
+  }).subscribe(data => { console.log('PUT Request is successfull', data);
+}, error => {
+  console.log('Error', error);
+});
+}
+
 }

@@ -25,7 +25,20 @@
                         </div>
                         <div class="btn-group">
                             <button class="btn btn-sm btn-primary text-light h-75">Send</button>
-                            <button type="button" class="btn btn-sm btn-secondary h-75" (click)="resetAddCategoryForm(addCategoryForm)">Reset</button>
+                            <button type="button" class="btn btn-sm btn-secondary h-75" (click)="resetCategoryForm(addCategoryForm)">Reset</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="edit-category">
+                    <p class="font-weight-bold float-left pr-3 pt-2">Edit Category</p>
+                    <form #editCategoryForm="ngForm" (ngSubmit)="editCategory(editCategoryForm)" class="form-row">
+                        <div class="form-group">
+                            <input type="hidden" name="editId" value="editCategoryEditId.value" ngModel #editId="ngModel">
+                            <input type="text" class="form-control" name="editCategoryName" ngModel required #editCategoryName="ngModel" placeholder="New Category Name">
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-warning text-light h-75">Save</button>
+                            <button type="button" class="btn btn-sm btn-secondary h-75" (click)="resetCategoryForm(editCategoryForm)">Reset</button>
                         </div>
                     </form>
                 </div>
@@ -41,7 +54,7 @@
                         <tr *ngFor="let category of categories$">
                             <td>{{category.id}}</td>
                             <td>{{category.categoryName}}</td>
-                            <td><a href="#"><i class="fa fa-cog"></i></a></td>
+                            <td><i class="fa fa-cog" (click)="editCategoryOption(category.id, category.categoryName, editCategoryForm)"></i></td>
                             <td><i class="fa fa-trash-o" (click)="deleteCategory(category.id)"></i></td>
                         </tr>
                     </tbody>
