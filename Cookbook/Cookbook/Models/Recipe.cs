@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Cookbook.Models
 {
@@ -21,10 +22,12 @@ namespace Cookbook.Models
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
+        [JsonIgnore]
         public Category Category { get; set; }
 
         public int SubcategoryId { get; set; }
         [ForeignKey("SubcategoryId")]
+        [JsonIgnore]
         public Subcategory Subcategory { get; set; }
     }
 }

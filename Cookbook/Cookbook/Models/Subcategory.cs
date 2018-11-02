@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Cookbook.Models
 {
@@ -14,8 +15,9 @@ namespace Cookbook.Models
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
+        [JsonIgnore]
         public Category Category { get; set; }
-
+        [JsonIgnore]
         public ICollection<Recipe> Recipes { get; set; }
 
     }

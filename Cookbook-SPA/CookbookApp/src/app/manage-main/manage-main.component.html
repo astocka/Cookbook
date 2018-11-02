@@ -2,7 +2,7 @@
     <img src="../../assets/icons8-maintenance-64.png" class="float-left mr-3">
     <h1 class="display-4 mb-4"><span class="text-warning"> Manage</span><span id="manage-title">recipes</span></h1>
     <hr>
-    <ul class="nav nav-pills mb-3 ">
+    <ul class="nav nav-pills mb-3">
         <li class="nav-item">
             <a class="nav-link bg-warning text-light rounded font-weight-bold" (click)="showCategoryTab()">Categories</a>
         </li>
@@ -17,6 +17,18 @@
         <div class="tab-pane fade show" id="manage-categories">
             <!-- Manage Category -->
             <div>
+                <div id="add-category">
+                    <p class="font-weight-bold float-left pr-3 pt-2">Add Category</p>
+                    <form #addCategoryForm="ngForm" (ngSubmit)="addCategory(addCategoryForm)" class="form-row">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="categoryName" ngModel required #categoryName="ngModel" placeholder="Category name">
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-primary text-light h-75">Send</button>
+                            <button type="button" class="btn btn-sm btn-secondary h-75" (click)="resetAddCategoryForm(addCategoryForm)">Reset</button>
+                        </div>
+                    </form>
+                </div>
                 <table class="table table-striped">
                     <thead class="thead-light">
                         <tr>
@@ -29,7 +41,7 @@
                         <tr *ngFor="let category of categories$">
                             <td>{{category.id}}</td>
                             <td>{{category.categoryName}}</td>
-                            <td><i class="fa fa-cog"></i></td>
+                            <td><a href="#"><i class="fa fa-cog"></i></a></td>
                             <td><i class="fa fa-trash-o"></i></td>
                         </tr>
                     </tbody>
