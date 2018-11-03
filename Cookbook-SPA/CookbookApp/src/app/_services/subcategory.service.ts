@@ -30,4 +30,16 @@ export class SubcategoryService {
         }
       );
   }
+
+  editSubcategory(editSubcategoryForm: NgForm) {
+    return this.http.put(this.url + 'subcategory/' + editSubcategoryForm.controls['editSubId'].value,
+    {
+      'Id': editSubcategoryForm.controls['editSubId'].value,
+      'SubcategoryName': editSubcategoryForm.controls['editSubcategoryName'].value,
+      'CategoryId': editSubcategoryForm.controls['editCatId'].value
+    }).subscribe(data => { console.log('PUT Request is successfull', data);
+  }, error => {
+    console.log('Error', error);
+  });
+  }
 }

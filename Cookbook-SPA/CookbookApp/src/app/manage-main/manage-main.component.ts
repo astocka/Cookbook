@@ -91,4 +91,17 @@ export class ManageMainComponent implements OnInit {
   addSubcategory(subcategoryForm: NgForm) {
     this.subcategoryService.addSubcategory(subcategoryForm);
   }
+
+  editSubcategory(editSubcategoryForm: NgForm) {
+    this.subcategoryService.editSubcategory(editSubcategoryForm);
+  }
+
+  editSubcategoryOption(id: number, name: string, category: number, editSubcategoryForm: NgForm) {
+    editSubcategoryForm.resetForm({
+      editSubId: id,
+      editSubcategoryName: name,
+      editCatId: category
+    });
+  }
+
 }

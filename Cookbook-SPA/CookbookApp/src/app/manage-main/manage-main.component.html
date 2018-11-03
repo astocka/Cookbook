@@ -67,9 +67,7 @@
         <!-- Manage Subcategories -->
         <div class="tab-pane fade show mt-3" id="manage-subcategories">
             <div id="add-subcategory">
-                <p class="font-weight-bold pr-3 pt-2"><span class="text-warning">Add</span>Subcategory</p>
-                <h5>Select category and write new subcategory name:</h5>
-                <div class="clearfix"></div>
+                <p class="font-weight-bold pr-3 pt-2 float-left"><span class="text-warning">Add</span>Subcategory</p>
                 <form #addSubcategoryForm="ngForm" (ngSubmit)="addSubcategory(addSubcategoryForm)" class="form-row">
 
                     <select (change)="selectedCategoryEvent($event, addSubcategoryForm)" selectCategory="categoryControl" class="float-left">
@@ -84,8 +82,25 @@
                         <button type="button" class="btn btn-sm btn-outline-success" (click)="resetForm(addSubcategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
                     </div>
                 </form>
+                <h5 class="small font-italic">Select category and write new subcategory name</h5>
+
             </div>
             <div class="clearfix"></div>
+            <div id="edit-subcategory" class="pt-3">
+                <p class="font-weight-bold float-left pr-3 pt-2"><span class="text-warning">Edit</span>Subcategory</p>
+                <form #editSubcategoryForm="ngForm" (ngSubmit)="editSubcategory(editSubcategoryForm)" class="form-row">
+                    <div class="form-group-sm">
+                        <input type="hidden" name="editSubId" value="editSubcategoryEditSubId.value" ngModel #editSubId="ngModel">
+                        <input type="hidden" name="editCatId" value="editSubcategoryEditCatId.value" ngModel #editCatId="ngModel">
+
+                        <input type="text" class="form-control" name="editSubcategoryName" ngModel required #editSubcategoryName="ngModel" placeholder="New subcategory name">
+                    </div>
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-sm btn-info text-light"><i class="fa fa-check-circle"></i> Save</button>
+                        <button type="button" class="btn btn-sm btn-outline-info" (click)="resetForm(editSubcategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
+                    </div>
+                </form>
+            </div>
             <table class="table table-striped mt-3">
                 <thead class="bg-primary text-light">
                     <tr>
@@ -100,7 +115,7 @@
                         <td>{{subcategory.id}}</td>
                         <td>{{subcategory.category.categoryName}}</td>
                         <td>{{subcategory.subcategoryName}}</td>
-                        <td><i class="fa fa-cog"></i></td>
+                        <td><i class="fa fa-cog" (click)="editSubcategoryOption(subcategory.id, subcategory.subcategoryName, subcategory.categoryId, editSubcategoryForm)"></i></td>
                         <td><i class="fa fa-trash-o"></i></td>
                     </tr>
                 </tbody>
