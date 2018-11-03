@@ -1,7 +1,9 @@
+import { Category } from './category';
+
 export interface Subcategory {
     id: number;
     subcategoryName: string;
 
     categoryId: number;
-    category: Object;
+    category: Category;
 }

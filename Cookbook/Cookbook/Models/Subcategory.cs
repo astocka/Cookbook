@@ -15,7 +15,6 @@ namespace Cookbook.Models
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        [JsonIgnore]
         public Category Category { get; set; }
         [JsonIgnore]
         public ICollection<Recipe> Recipes { get; set; }

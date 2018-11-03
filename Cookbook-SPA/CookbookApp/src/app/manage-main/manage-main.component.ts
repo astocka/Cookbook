@@ -20,6 +20,10 @@ export class ManageMainComponent implements OnInit {
   recipes$: Object;
   categories$: Object;
   subcategories$: Object;
+  selectCategories$ = this.categoryService.getCategories().subscribe(data =>  (this.selectCategories$ = data));
+  selectedCategory: number;
+
+// private value: any = {};
 
   constructor(
     private recipeService: RecipeService,
@@ -31,6 +35,7 @@ export class ManageMainComponent implements OnInit {
     this.recipeService.getRecipes().subscribe(data => (this.recipes$ = data));
     this.categoryService.getCategories().subscribe(data => (this.categories$ = data));
     this.subcategoryService.getSubcategories().subscribe(data => (this.subcategories$ = data));
+    // this.categoryService.getCategories().subscribe(data =>  (this.selectCategories$ = data));
   }
   showCategoryTab() {
     $('#manage-categories').toggle();
@@ -41,18 +46,23 @@ export class ManageMainComponent implements OnInit {
 
   showSubcategoryTab() {
     $('#manage-subcategories').toggle();
+    $('#manage-categories').hide();
+    $('#manage-recipes').hide();
+    $('.nav-subcategories').toggleClass('bg-primary text-light');
   }
 
   showRecipeTab() {
     $('#manage-recipes').toggle();
   }
 
+  // Manage Category
   addCategory(addCategoryForm: NgForm) {
     this.categoryService.addCategory(addCategoryForm);
   }
 
-  resetCategoryForm(categoryForm: NgForm) {
-    categoryForm.resetForm();
+  resetForm(form: NgForm) {
+    form.resetForm();
+    $('#category-number').text(0);
   }
 
   deleteCategory(id) {
@@ -68,5 +78,17 @@ export class ManageMainComponent implements OnInit {
 
   editCategory(editCategoryForm: NgForm) {
     this.categoryService.editCategory(editCategoryForm);
+  }
+
+  // Manage Subcategory
+  selectedCategoryEvent(event: any, addSubcategoryForm: NgForm) {
+    this.selectedCategory = event.target.value;
+    addSubcategoryForm.resetForm({
+      categoryId: event.target.value,
+      subcategoryName: ''
+    });
+  }
+  addSubcategory(subcategoryForm: NgForm) {
+    this.subcategoryService.addSubcategory(subcategoryForm);
   }
 }

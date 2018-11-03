@@ -22,12 +22,10 @@ namespace Cookbook.Models
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]
-        [JsonIgnore]
         public Category Category { get; set; }
 
         public int SubcategoryId { get; set; }
         [ForeignKey("SubcategoryId")]
-        [JsonIgnore]
         public Subcategory Subcategory { get; set; }
     }
 }

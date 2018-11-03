@@ -6,7 +6,7 @@
         <li class="nav-item nav-categories">
             <a class="nav-link rounded font-weight-bold" (click)="showCategoryTab()">Categories</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-subcategories">
             <a class="nav-link rounded font-weight-bold" (click)="showSubcategoryTab()">Subcategories</a>
         </li>
         <li class="nav-item">
@@ -18,20 +18,20 @@
             <!-- Manage Category -->
             <div>
                 <div id="add-category">
-                    <p class="font-weight-bold float-left pr-3 pt-2">Add Category</p>
+                    <p class="font-weight-bold float-left pr-3 pt-2"><span class="text-warning">Add</span>Category</p>
                     <form #addCategoryForm="ngForm" (ngSubmit)="addCategory(addCategoryForm)" class="form-row">
                         <div class="form-group-sm">
                             <input type="text" class="form-control" name="categoryName" ngModel required #categoryName="ngModel" placeholder="Category name">
                         </div>
                         <div class="btn-group btn-group-sm">
                             <button class="btn btn-success text-light"><i class="fa fa-plus"></i> Add</button>
-                            <button type="button" class="btn btn-sm btn-outline-success" (click)="resetCategoryForm(addCategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
+                            <button type="button" class="btn btn-sm btn-outline-success" (click)="resetForm(addCategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
                         </div>
                     </form>
                 </div>
                 <div class="clearfix"></div>
                 <div id="edit-category">
-                    <p class="font-weight-bold float-left pr-3 pt-2">Edit Category</p>
+                    <p class="font-weight-bold float-left pr-3 pt-2"><span class="text-warning">Edit</span>Category</p>
                     <form #editCategoryForm="ngForm" (ngSubmit)="editCategory(editCategoryForm)" class="form-row">
                         <div class="form-group-sm">
                             <input type="hidden" name="editId" value="editCategoryEditId.value" ngModel #editId="ngModel">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="btn-group btn-group-sm">
                             <button class="btn btn-sm btn-info text-light"><i class="fa fa-check-circle"></i> Save</button>
-                            <button type="button" class="btn btn-sm btn-outline-info" (click)="resetCategoryForm(editCategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
+                            <button type="button" class="btn btn-sm btn-outline-info" (click)="resetForm(editCategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
                         </div>
                     </form>
                 </div>
@@ -64,15 +64,35 @@
             </div>
             <!-- End -->
         </div>
+        <!-- Manage Subcategories -->
         <div class="tab-pane fade show mt-3" id="manage-subcategories">
-            <!-- Manage Subcategories -->
-            <table class="table table-striped">
-                <thead class="thead-light">
+            <div id="add-subcategory">
+                <p class="font-weight-bold pr-3 pt-2"><span class="text-warning">Add</span>Subcategory</p>
+                <h5>Select category and write new subcategory name:</h5>
+                <div class="clearfix"></div>
+                <form #addSubcategoryForm="ngForm" (ngSubmit)="addSubcategory(addSubcategoryForm)" class="form-row">
+
+                    <select (change)="selectedCategoryEvent($event, addSubcategoryForm)" selectCategory="categoryControl" class="float-left">
+                    <option *ngFor="let category of selectCategories$" name="categoryId" ngModel required #categoryId="ngModel">{{category.id}}</option>
+                    </select>
+
+                    <div class="form-group-sm">
+                        <input type="text" class="form-control" name="subcategoryName" ngModel required #subcategoryName="ngModel" placeholder="Subcategory name">
+                    </div>
+                    <div class="btn-group btn-group-sm">
+                        <button class="btn btn-success text-light"><i class="fa fa-plus"></i> Add</button>
+                        <button type="button" class="btn btn-sm btn-outline-success" (click)="resetForm(addSubcategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+            <table class="table table-striped mt-3">
+                <thead class="bg-primary text-light">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Category</th>
                         <th scope="col">Subcategory</th>
-                        <th scope="col" colspan="2">Options</th>
+                        <th scope="col" colspan="3">Options</th>
                     </tr>
                 </thead>
                 <tbody>
