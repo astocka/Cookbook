@@ -2,15 +2,15 @@
     <img src="../../assets/icons8-maintenance-64.png" class="float-left mr-3">
     <h1 class="display-4 mb-4"><span class="text-warning"> Manage</span><span id="manage-title">recipes</span></h1>
     <hr>
-    <ul class="nav nav-pills mb-3">
-        <li class="nav-item">
-            <a class="nav-link bg-warning text-light rounded font-weight-bold" (click)="showCategoryTab()">Categories</a>
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item nav-categories">
+            <a class="nav-link rounded font-weight-bold" (click)="showCategoryTab()">Categories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link bg-warning text-light rounded font-weight-bold" (click)="showSubcategoryTab()">Subcategories</a>
+            <a class="nav-link rounded font-weight-bold" (click)="showSubcategoryTab()">Subcategories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link bg-warning text-light rounded font-weight-bold" (click)="showRecipeTab()">Recipes</a>
+            <a class="nav-link rounded font-weight-bold" (click)="showRecipeTab()">Recipes</a>
         </li>
     </ul>
     <div class="tab-content" id="manageTabContent">
@@ -20,30 +20,32 @@
                 <div id="add-category">
                     <p class="font-weight-bold float-left pr-3 pt-2">Add Category</p>
                     <form #addCategoryForm="ngForm" (ngSubmit)="addCategory(addCategoryForm)" class="form-row">
-                        <div class="form-group">
+                        <div class="form-group-sm">
                             <input type="text" class="form-control" name="categoryName" ngModel required #categoryName="ngModel" placeholder="Category name">
                         </div>
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-primary text-light h-75">Send</button>
-                            <button type="button" class="btn btn-sm btn-secondary h-75" (click)="resetCategoryForm(addCategoryForm)">Reset</button>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-success text-light"><i class="fa fa-plus"></i> Add</button>
+                            <button type="button" class="btn btn-sm btn-outline-success" (click)="resetCategoryForm(addCategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
                         </div>
                     </form>
                 </div>
+                <div class="clearfix"></div>
                 <div id="edit-category">
                     <p class="font-weight-bold float-left pr-3 pt-2">Edit Category</p>
                     <form #editCategoryForm="ngForm" (ngSubmit)="editCategory(editCategoryForm)" class="form-row">
-                        <div class="form-group">
+                        <div class="form-group-sm">
                             <input type="hidden" name="editId" value="editCategoryEditId.value" ngModel #editId="ngModel">
-                            <input type="text" class="form-control" name="editCategoryName" ngModel required #editCategoryName="ngModel" placeholder="New Category Name">
+                            <input type="text" class="form-control" name="editCategoryName" ngModel required #editCategoryName="ngModel" placeholder="New category name">
                         </div>
-                        <div class="btn-group">
-                            <button class="btn btn-sm btn-warning text-light h-75">Save</button>
-                            <button type="button" class="btn btn-sm btn-secondary h-75" (click)="resetCategoryForm(editCategoryForm)">Reset</button>
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-sm btn-info text-light"><i class="fa fa-check-circle"></i> Save</button>
+                            <button type="button" class="btn btn-sm btn-outline-info" (click)="resetCategoryForm(editCategoryForm)"><i class="fa fa-retweet"></i> Reset</button>
                         </div>
                     </form>
                 </div>
+                <div class="clearfix"></div>
                 <table class="table table-striped">
-                    <thead class="thead-light">
+                    <thead class="bg-primary text-light">
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Category</th>

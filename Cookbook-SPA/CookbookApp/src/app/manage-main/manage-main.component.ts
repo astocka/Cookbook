@@ -34,6 +34,9 @@ export class ManageMainComponent implements OnInit {
   }
   showCategoryTab() {
     $('#manage-categories').toggle();
+    $('#manage-subcategories').hide();
+    $('#manage-recipes').hide();
+    $('.nav-categories').toggleClass('bg-primary text-light');
   }
 
   showSubcategoryTab() {
