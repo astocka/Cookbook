@@ -42,4 +42,11 @@ export class SubcategoryService {
     console.log('Error', error);
   });
   }
+
+  deleteSubcategory(id: number) {
+    return this.http.delete(this.url + 'subcategory/' + id)
+    .subscribe(data => { console.log('DELETE Request is successfull', data);
+  }, error => { console.log('Error', error);
+  });
+  }
 }

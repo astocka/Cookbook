@@ -104,4 +104,8 @@ export class ManageMainComponent implements OnInit {
     });
   }
 
+  deleteSubcategory(id) {
+    this.subcategoryService.deleteSubcategory(id);
+  }
+
 }

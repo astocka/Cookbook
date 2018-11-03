@@ -116,7 +116,7 @@
                         <td>{{subcategory.category.categoryName}}</td>
                         <td>{{subcategory.subcategoryName}}</td>
                         <td><i class="fa fa-cog" (click)="editSubcategoryOption(subcategory.id, subcategory.subcategoryName, subcategory.categoryId, editSubcategoryForm)"></i></td>
-                        <td><i class="fa fa-trash-o"></i></td>
+                        <td><i class="fa fa-trash-o" (click)="deleteSubcategory(subcategory.id)"></i></td>
                     </tr>
                 </tbody>
             </table>
