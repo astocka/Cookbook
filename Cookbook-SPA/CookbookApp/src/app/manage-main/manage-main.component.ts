@@ -20,8 +20,11 @@ export class ManageMainComponent implements OnInit {
   recipes$: Object;
   categories$: Object;
   subcategories$: Object;
-  selectCategories$ = this.categoryService.getCategories().subscribe(data =>  (this.selectCategories$ = data));
+  selectCategories$ = this.categoryService.getCategories().subscribe(data => (this.selectCategories$ = data));
   selectedCategory: number;
+  selectedSubcategory: number;
+  selectSubcategories$ = this.subcategoryService.getSubcategories().subscribe(dataX => (this.selectSubcategories$ = dataX));
+  sc: number;
 
 // private value: any = {};
 
@@ -53,6 +56,17 @@ export class ManageMainComponent implements OnInit {
 
   showRecipeTab() {
     $('#manage-recipes').toggle();
+    $('#manage-categories').hide();
+    $('#manage-subcategories').hide();
+    $('.nav-recipes').toggleClass('bg-primary text-light');
+  }
+
+  showAddRecipeTab() {
+    $('#manage-addRecipes').toggle();
+    $('#manage-categories').hide();
+    $('#manage-subcategories').hide();
+    $('#manage-recipes').hide();
+    $('.nav-addRecipes').toggleClass('bg-primary text-light');
   }
 
   // Manage Category
@@ -107,5 +121,29 @@ export class ManageMainComponent implements OnInit {
   deleteSubcategory(id) {
     this.subcategoryService.deleteSubcategory(id);
   }
+
+  // Manage Recipes
+  addRecipe(addRecipeForm: NgForm) {
+    this.recipeService.addNewRecipe(addRecipeForm);
+  }
+
+  selectedRecipeCategoryEvent(event: any, addRecipeForm: NgForm) {
+    this.selectedCategory = event.target.value;
+    addRecipeForm.resetForm({
+      categoryId: event.target.value
+  });
+}
+
+selectedRecipeSubcategoryEvent(sc: any, addRecipeForm: NgForm) {
+  // this.selectedSubcategory = event.target.value;
+  addRecipeForm.resetForm({
+    categoryId: addRecipeForm.controls['categoryId'].value,
+    subcategoryId: sc.target.value
+  });
+}
+
+deleteRecipe(id) {
+  this.recipeService.deleteRecipe(id);
+}
 
 }

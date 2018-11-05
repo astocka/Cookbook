@@ -9,8 +9,11 @@
         <li class="nav-item nav-subcategories">
             <a class="nav-link rounded font-weight-bold" (click)="showSubcategoryTab()">Subcategories</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item nav-recipes">
             <a class="nav-link rounded font-weight-bold" (click)="showRecipeTab()">Recipes</a>
+        </li>
+        <li class="nav-item nav-addRecipes">
+            <a class="nav-link rounded font-weight-bold" (click)="showAddRecipeTab()">Add Recipes</a>
         </li>
     </ul>
     <div class="tab-content" id="manageTabContent">
@@ -122,10 +125,11 @@
             </table>
             <!-- End -->
         </div>
+        <!-- Manage Recipes -->
         <div class="tab-pane fade show mt-3" id="manage-recipes">
-            <!-- Manage Recipes -->
-            <table class="table-responsive table-striped">
-                <thead class="thead-light">
+            <table class="table-striped">
+                <!-- table-responsible -->
+                <thead class="bg-primary text-light">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Category</th>
@@ -151,11 +155,18 @@
                         <td>{{recipe.rating}}</td>
                         <td><a class="link" href="#">Description</a></td>
                         <td><i class="fa fa-cog"></i></td>
-                        <td><i class="fa fa-trash-o"></i></td>
+                        <td><i class="fa fa-trash-o" (click)="deleteRecipe(recipe.id)"></i></td>
                     </tr>
                 </tbody>
             </table>
             <!-- End -->
         </div>
+        <!-- Add Recipe -->
+        <div class="tab-pane fade show mt-3" id="manage-addRecipes">
+            <div id="add-recipe">
+
+            </div>
+        </div>
+        <!-- End -->
     </div>
 </div>

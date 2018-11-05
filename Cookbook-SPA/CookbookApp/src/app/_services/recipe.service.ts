@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../_models/recipe';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +21,38 @@ getRecipe(id) {
   return this.http.get(this.url + 'recipes/' + id);
 }
 
-// getCategoryRecipes(categoryName) {
-//   return this.http.get(this.url + 'recipes/' + categoryName);
-// }
-
 getCategoryRecipes(id) {
   return this.http.get(this.url + 'recipes/' + id);
 }
 
-// getFavRecipes() {
-//   return this.http.get(this.url + 'recipes')
-// }
+addNewRecipe(addRecipeForm: NgForm) {
+  console.log('service');
+  return this.http
+    .post(this.url + 'recipes', {
+      'Name': addRecipeForm.controls['name'].value,
+      'Description': addRecipeForm.controls['description'].value,
+      'Time': addRecipeForm.controls['time'].value,
+      'Portion': addRecipeForm.controls['portion'].value,
+      // 'Favourite': addRecipeForm.controls['favourite'].value,
+      // 'Rating': addRecipeForm.controls['rating'].value,
+      'CategoryId': addRecipeForm.controls['categoryId'].value,
+      'SubcategoryId': addRecipeForm.controls['subcategoryId'].value
+    })
+    .subscribe(
+      data => {
+        console.log('POST Request is successfull', data);
+      },
+      error => {
+        console.log('Error', error);
+      }
+    );
+}
+
+deleteRecipe(id: number) {
+  return this.http.delete(this.url + 'recipes/' + id)
+  .subscribe(data => { console.log('DELETE Request is successfull', data);
+}, error => { console.log('Error', error);
+});
+}
 
 }
