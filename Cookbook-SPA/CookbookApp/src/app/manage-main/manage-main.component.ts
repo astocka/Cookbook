@@ -26,7 +26,7 @@ export class ManageMainComponent implements OnInit {
   selectSubcategories$ = this.subcategoryService.getSubcategories().subscribe(dataX => (this.selectSubcategories$ = dataX));
   sc: number;
 
-// private value: any = {};
+  // private value: any = {};
 
   constructor(
     private recipeService: RecipeService,
@@ -38,6 +38,7 @@ export class ManageMainComponent implements OnInit {
     this.recipeService.getRecipes().subscribe(data => (this.recipes$ = data));
     this.categoryService.getCategories().subscribe(data => (this.categories$ = data));
     this.subcategoryService.getSubcategories().subscribe(data => (this.subcategories$ = data));
+    $('#edit-recipe').hide();
   }
   showCategoryTab() {
     $('#manage-categories').toggle();
@@ -85,7 +86,7 @@ export class ManageMainComponent implements OnInit {
   editCategoryOption(id: number, name: string, editCategoryForm: NgForm) {
     editCategoryForm.resetForm({
       editId: id,
-      editCategoryName: name
+      editCategoryName: name,
     });
   }
 
@@ -98,7 +99,7 @@ export class ManageMainComponent implements OnInit {
     this.selectedCategory = event.target.value;
     addSubcategoryForm.resetForm({
       categoryId: event.target.value,
-      subcategoryName: ''
+      subcategoryName: '',
     });
   }
   addSubcategory(subcategoryForm: NgForm) {
@@ -113,7 +114,7 @@ export class ManageMainComponent implements OnInit {
     editSubcategoryForm.resetForm({
       editSubId: id,
       editSubcategoryName: name,
-      editCatId: category
+      editCatId: category,
     });
   }
 
@@ -126,8 +127,26 @@ export class ManageMainComponent implements OnInit {
     this.recipeService.addNewRecipe(addRecipeForm);
   }
 
-deleteRecipe(id) {
-  this.recipeService.deleteRecipe(id);
-}
+  deleteRecipe(id) {
+    this.recipeService.deleteRecipe(id);
+  }
 
+  showEditRecipeOption(recipe: any, editRecipeForm: NgForm) {
+    $('#edit-recipe').show();
+    editRecipeForm.resetForm({
+      editId: recipe.id,
+      editCategoryId: recipe.category.id,
+      editSubcategoryId: recipe.subcategory.id,
+      editName: recipe.name,
+      editDescription: recipe.description,
+      editTime: recipe.time,
+      editPortion: recipe.portion,
+      editFavourite: recipe.favourite,
+      editRating: recipe.rating,
+    });
+  }
+
+  editRecipe(editRecipeForm: NgForm) {
+    this.recipeService.editRecipe(editRecipeForm);
+  }
 }

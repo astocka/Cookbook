@@ -54,4 +54,22 @@ deleteRecipe(id: number) {
 });
 }
 
+editRecipe(editRecipeForm: NgForm) {
+  return this.http.put(this.url + 'recipes/' + editRecipeForm.controls['editId'].value,
+    {
+      'Id': editRecipeForm.controls['editId'].value,
+      'CategoryId': editRecipeForm.controls['editCategoryId'].value,
+      'SubcategoryId': editRecipeForm.controls['editSubcategoryId'].value,
+      'Name': editRecipeForm.controls['editName'].value,
+      'Description': editRecipeForm.controls['editDescription'].value,
+      'Time': editRecipeForm.controls['editTime'].value,
+      'Portion': editRecipeForm.controls['editPortion'].value,
+      'Favourite': editRecipeForm.controls['editFavourite'].value,
+      'Rating': editRecipeForm.controls['editRating'].value
+    }).subscribe(data => { console.log('PUT Request is successfull', data);
+  }, error => {
+    console.log('Error', error);
+  });
+}
+
 }

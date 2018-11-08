@@ -141,7 +141,6 @@
                         <th scope="col">Portion</th>
                         <th scope="col">Favourite</th>
                         <th scope="col">Rating</th>
-                        <th scope="col">Description</th>
                         <th scope="col" colspan="2">Options</th>
                     </tr>
                 </thead>
@@ -155,12 +154,85 @@
                         <td>{{recipe.portion}}</td>
                         <td>{{recipe.favourite}}</td>
                         <td>{{recipe.rating}}</td>
-                        <td><a class="link" href="#">Description</a></td>
-                        <td><i class="fa fa-cog"></i></td>
+                        <td><i class="fa fa-cog" (click)="showEditRecipeOption(recipe, editRecipeForm)"></i></td>
                         <td><i class="fa fa-trash-o" (click)="deleteRecipe(recipe.id)"></i></td>
                     </tr>
                 </tbody>
             </table>
+            <!-- End -->
+            <!-- Edit Recipe -->
+            <div id="edit-recipe">
+                <form #editRecipeForm="ngForm" (ngSubmit)="editRecipe(editRecipeForm)" class="col-sm-6">
+                    <fieldset>
+                        <legend class="font-weight-bold pr-3 pt-2"><span class="text-warning">Edit</span>Recipe</legend>
+                        <input type="hidden" name="editId" value="editRecipeId.value" ngModel required #id="ngModel">
+                        <div>
+                            <label class="float-left">Category </label>
+                            <input type="number" class="form-control" name="editCategoryId" ngModel required #categoryId="ngModel" placeholder="CategoryId">
+                        </div>
+                        <div class="clearfix"></div>
+
+                        <div>
+                            <label class="float-left">Subcategory </label>
+                            <input type="number" class="form-control" name="editSubcategoryId" ngModel required #subcategoryId="ngModel" placeholder="SubcategoryId">
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" name="editName" ngModel required #name="ngModel" placeholder="Recipe name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea col="5" rows="3" class="form-control" name="editDescription" ngModel required #description="ngModel" placeholder="Description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="number" class="form-control" name="editTime" ngModel required #time="ngModel" placeholder="Time">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="portion">Portion(s)</label>
+                            <input type="number" class="form-control" name="editPortion" ngModel required #portion="ngModel" placeholder="Portion(s)">
+                        </div>
+
+                        <fieldset class="form-group">
+                            <legend>Is favourite?</legend>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="editFavourite" ngModel required #favourite="ngModel" value="true">
+                                    True
+                                  </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="editFavourite" ngModel required #favourite="ngModel" value="false">
+                                    False
+                                  </label>
+                            </div>
+                        </fieldset>
+
+                        <div class="form-group">
+                            <label for="rating">Rating</label>
+                            <select class="form-control" name="editRating" ngModel required #rating="ngModel">
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="btn-group btn-group">
+                            <button class="btn btn-success text-light"><i class="fa fa-plus"></i> Save</button>
+                            <button type="button" class="btn btn-sm btn-outline-success" (click)="resetForm(editRecipeForm)"><i class="fa fa-retweet"></i> Reset</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
             <!-- End -->
         </div>
         <!-- Add Recipe -->
