@@ -26,15 +26,14 @@ getCategoryRecipes(id) {
 }
 
 addNewRecipe(addRecipeForm: NgForm) {
-  console.log('service');
   return this.http
     .post(this.url + 'recipes', {
       'Name': addRecipeForm.controls['name'].value,
       'Description': addRecipeForm.controls['description'].value,
       'Time': addRecipeForm.controls['time'].value,
       'Portion': addRecipeForm.controls['portion'].value,
-      // 'Favourite': addRecipeForm.controls['favourite'].value,
-      // 'Rating': addRecipeForm.controls['rating'].value,
+      'Favourite': addRecipeForm.controls['favourite'].value,
+      'Rating': addRecipeForm.controls['rating'].value,
       'CategoryId': addRecipeForm.controls['categoryId'].value,
       'SubcategoryId': addRecipeForm.controls['subcategoryId'].value
     })

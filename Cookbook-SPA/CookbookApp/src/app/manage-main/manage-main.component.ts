@@ -38,7 +38,6 @@ export class ManageMainComponent implements OnInit {
     this.recipeService.getRecipes().subscribe(data => (this.recipes$ = data));
     this.categoryService.getCategories().subscribe(data => (this.categories$ = data));
     this.subcategoryService.getSubcategories().subscribe(data => (this.subcategories$ = data));
-    // this.categoryService.getCategories().subscribe(data =>  (this.selectCategories$ = data));
   }
   showCategoryTab() {
     $('#manage-categories').toggle();
@@ -126,21 +125,6 @@ export class ManageMainComponent implements OnInit {
   addRecipe(addRecipeForm: NgForm) {
     this.recipeService.addNewRecipe(addRecipeForm);
   }
-
-  selectedRecipeCategoryEvent(event: any, addRecipeForm: NgForm) {
-    this.selectedCategory = event.target.value;
-    addRecipeForm.resetForm({
-      categoryId: event.target.value
-  });
-}
-
-selectedRecipeSubcategoryEvent(sc: any, addRecipeForm: NgForm) {
-  // this.selectedSubcategory = event.target.value;
-  addRecipeForm.resetForm({
-    categoryId: addRecipeForm.controls['categoryId'].value,
-    subcategoryId: sc.target.value
-  });
-}
 
 deleteRecipe(id) {
   this.recipeService.deleteRecipe(id);
