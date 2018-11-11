@@ -19,7 +19,7 @@
         <p class="card-text">{{recipeDetails$.description}}</p>
         <div class="btn-group">
             <a [routerLink]="['/recipes']" class="btn btn-warning rounded">Back to recipes</a>
-            <a class="btn btn-success rounded">Add to favourite</a>
+            <a class="btn btn-success rounded" (click)="addToFav(recipeDetails$)">Add to favourite</a>
         </div>
     </div>
 </div>

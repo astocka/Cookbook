@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Recipe } from '../_models/recipe';
 import { NgForm } from '@angular/forms';
+import { puts } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +71,23 @@ editRecipe(editRecipeForm: NgForm) {
   }, error => {
     console.log('Error', error);
   });
+}
+
+addToFav(recipe: Recipe) {
+  return this.http.put(this.url + 'recipes/' + recipe.id,
+  {
+      'Id': recipe.id,
+      'CategoryId': recipe.categoryId,
+      'SubcategoryId': recipe.subcategoryId,
+      'Name': recipe.name,
+      'Description': recipe.description,
+      'Time': recipe.time,
+      'Portion': recipe.portion,
+      'Favourite': true,
+      'Rating': recipe.rating
+  }).subscribe(data => { console.log('PUT Request is successfull', data);
+}, error => { console.log('Error', error);
+});
 }
 
 }

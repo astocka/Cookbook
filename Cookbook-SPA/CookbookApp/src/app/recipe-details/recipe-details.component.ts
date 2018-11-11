@@ -18,4 +18,8 @@ export class RecipeDetailsComponent implements OnInit {
     this.recipeService.getRecipe(this.recipeDetails$).subscribe(data => this.recipeDetails$ = data);
   }
 
+  addToFav(recipeDetails$) {
+    this.recipeService.addToFav(recipeDetails$);
+  }
+
 }
