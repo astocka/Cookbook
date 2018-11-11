@@ -1,7 +1,8 @@
 <div class="card mb-4">
     <img class="card-img-top" src="../../assets/basil-dinner-food-8500.jpg" alt="cooking">
     <div class="card-body p-1 text-center text-dark">
-        <h4 class="card-title text-center mb-1">{{recipe.name}}</h4>
+        <h5 class="text-center text-muted">{{recipe.category.categoryName}} / {{recipe.subcategory.subcategoryName}}</h5>
+        <h3 class="card-title text-center mb-1">{{recipe.name}}</h3>
         <a routerLink="/details/{{recipe.id}}" class="btn btn-primary w-100">Cook</a>
     </div>
 </div>

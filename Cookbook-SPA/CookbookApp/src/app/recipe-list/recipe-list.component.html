@@ -1,7 +1,12 @@
-<div class="container mt-5">
-    <div class="row">
-        <div *ngFor="let recipe of recipes$" class="col-lg-4 col-md-8 col-sm-6">
-            <app-recipe-card [recipe]="recipe"></app-recipe-card>
+<div>
+    <img src="../../assets/icons8-food-and-wine-64.png" class="float-left mr-3">
+    <h1 class="display-4 mb-4"><span class="text-warning"> All</span><span id="manage-title">recipes</span></h1>
+    <hr>
+    <div class="container mt-5">
+        <div class="row">
+            <div *ngFor="let recipe of recipes$" class="col-lg-4 col-md-8 col-sm-6">
+                <app-recipe-card [recipe]="recipe"></app-recipe-card>
+            </div>
         </div>
     </div>
 </div>
