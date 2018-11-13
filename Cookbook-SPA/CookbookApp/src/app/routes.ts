@@ -8,6 +8,7 @@ import { ManageMainComponent } from './manage-main/manage-main.component';
 import { ManageRecipesComponent } from './manage-recipes/manage-recipes.component';
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { ManageSubcategoriesComponent } from './manage-subcategories/manage-subcategories.component';
+import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
 
 export const appRoutes: Routes = [
 
@@ -21,5 +22,6 @@ export const appRoutes: Routes = [
     { path: 'manage-categories', component: ManageCategoriesComponent },
     { path: 'manage-subcategories', component: ManageSubcategoriesComponent },
     { path: 'fav', component: RecipeFavComponent },
+    { path: 'search', component: RecipeSearchComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

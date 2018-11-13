@@ -26,11 +26,11 @@
         <form class="form-inline">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-search"></i></span>
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Search recipe">
+                <input type="text" class="form-control" name="search" placeholder="Search recipe">
             </div>
-            <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-warning my-2 my-sm-0" type="submit" [routerLink]="['/search']">Search</button>
         </form>
     </div>
 </nav>

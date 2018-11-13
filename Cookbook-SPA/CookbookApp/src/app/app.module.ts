@@ -22,6 +22,7 @@ import { ManageRecipesComponent } from './manage-recipes/manage-recipes.componen
 import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
 import { ManageSubcategoriesComponent } from './manage-subcategories/manage-subcategories.component';
 import { ManageMainComponent } from './manage-main/manage-main.component';
+import { RecipeSearchComponent } from './recipe-search/recipe-search.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ManageMainComponent } from './manage-main/manage-main.component';
     ManageRecipesComponent,
     ManageCategoriesComponent,
     ManageSubcategoriesComponent,
-    ManageMainComponent
+    ManageMainComponent,
+    RecipeSearchComponent
   ],
   imports: [
     BrowserModule,

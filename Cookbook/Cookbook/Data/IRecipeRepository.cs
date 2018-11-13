@@ -12,5 +12,6 @@ namespace Cookbook.Data
          Task<bool> SaveAll();
          Task<IEnumerable<Recipe>> GetRecipes();
          Task<Recipe> GetRecipe(int id);
+         Task<IEnumerable<Recipe>> SearchRecipe(string search);
     }
 }

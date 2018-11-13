@@ -8,6 +8,7 @@ declare var $: any;
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  recipes$: Object;
 
   constructor() { }
 

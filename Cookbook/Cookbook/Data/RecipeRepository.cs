@@ -43,6 +43,23 @@ namespace Cookbook.Data
             return await _dataContext.SaveChangesAsync() > 0;
         }
 
-      
+        public async Task<IEnumerable<Recipe>> SearchRecipe(string search)
+        {
+            var result = new List<Recipe>();
+            var recipes = await _dataContext.Recipes.Include(c => c.Category).ThenInclude(s => s.Subcategories).ToListAsync();
+            foreach (var recipe in recipes)
+            {
+                // if(recipe.Name == search || recipe.Description.Contains(search) || recipe.Category.CategoryName == search || recipe.Subcategory.SubcategoryName == search)
+                if(recipe.Name == search)
+                {
+                    result.Add(recipe);
+                }
+            }
+            if(result == null)
+            {
+                return null;
+            }
+            return result;
+        }
     }
 }
