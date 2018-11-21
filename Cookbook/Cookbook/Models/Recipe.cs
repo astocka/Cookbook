@@ -19,6 +19,7 @@ namespace Cookbook.Models
         public int Portion { get; set; }
         public bool Favourite { get; set; }
         public int Rating { get; set; }
+        public string Ingredients { get; set; }
 
         public int CategoryId { get; set; }
         [ForeignKey("CategoryId")]

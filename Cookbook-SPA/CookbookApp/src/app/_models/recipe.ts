@@ -6,6 +6,7 @@ export interface Recipe {
     portion: number;
     favourite: boolean;
     rating: number;
+    ingredients: string;
 
     categoryId: number;
     subcategoryId: number;

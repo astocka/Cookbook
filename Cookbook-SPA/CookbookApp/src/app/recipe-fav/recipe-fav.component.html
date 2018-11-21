@@ -4,9 +4,8 @@
     <hr>
     <div class="container mt-5">
         <div class="row">
-            <div *ngFor="let recipe of recipes$" class="col-lg-4 col-md-8 col-sm-6">
+            <div *ngFor="let recipe of recipes$" class="col-lg-6 col-md-8 col-sm-8">
                 <div *ngIf="recipe.favourite == true">
-                    <!-- <li><a class="h4 text-secondary" routerLink="/details/{{recipe.id}}">{{ recipe.name }}</a></li> -->
                     <app-recipe-card [recipe]="recipe"></app-recipe-card>
                 </div>
             </div>

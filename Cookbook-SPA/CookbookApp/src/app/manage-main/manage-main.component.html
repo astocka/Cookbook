@@ -136,6 +136,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Subcategory</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Ingredients</th>
                         <th scope="col">Time</th>
                         <th scope="col">Portion</th>
                         <th scope="col">Favourite</th>
@@ -149,6 +150,7 @@
                         <td>{{recipe.category.categoryName}}</td>
                         <td>{{recipe.subcategory.subcategoryName}}</td>
                         <td>{{recipe.name}}</td>
+                        <td>{{recipe.ingredients}}</td>
                         <td>{{recipe.time}}</td>
                         <td>{{recipe.portion}}</td>
                         <td>{{recipe.favourite}}</td>
@@ -181,6 +183,11 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="editName" ngModel required #name="ngModel" placeholder="Recipe name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Ingredients</label>
+                            <textarea col="5" rows="3" class="form-control" name="editIngredients" ngModel required #ingredients="ngModel" placeholder="Ingredients"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -256,6 +263,11 @@
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" name="name" ngModel required #name="ngModel" placeholder="Recipe name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ingredients">Ingredients</label>
+                            <textarea col="5" rows="3" class="form-control" name="ingredients" ngModel required #ingredients="ngModel" placeholder="Ingredients"></textarea>
                         </div>
 
                         <div class="form-group">

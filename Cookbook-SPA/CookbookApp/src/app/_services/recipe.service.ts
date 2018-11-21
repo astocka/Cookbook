@@ -30,6 +30,7 @@ addNewRecipe(addRecipeForm: NgForm) {
   return this.http
     .post(this.url + 'recipes', {
       'Name': addRecipeForm.controls['name'].value,
+      'Ingredients': addRecipeForm.controls['ingredients'].value,
       'Description': addRecipeForm.controls['description'].value,
       'Time': addRecipeForm.controls['time'].value,
       'Portion': addRecipeForm.controls['portion'].value,
@@ -62,6 +63,7 @@ editRecipe(editRecipeForm: NgForm) {
       'CategoryId': editRecipeForm.controls['editCategoryId'].value,
       'SubcategoryId': editRecipeForm.controls['editSubcategoryId'].value,
       'Name': editRecipeForm.controls['editName'].value,
+      'Ingredients': editRecipeForm.controls['ingredients'].value,
       'Description': editRecipeForm.controls['editDescription'].value,
       'Time': editRecipeForm.controls['editTime'].value,
       'Portion': editRecipeForm.controls['editPortion'].value,
@@ -79,6 +81,7 @@ addToFav(recipe: Recipe) {
       'Id': recipe.id,
       'CategoryId': recipe.categoryId,
       'SubcategoryId': recipe.subcategoryId,
+      'Ingredients': recipe.ingredients,
       'Name': recipe.name,
       'Description': recipe.description,
       'Time': recipe.time,

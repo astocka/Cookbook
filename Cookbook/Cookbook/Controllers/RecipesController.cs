@@ -109,23 +109,23 @@ namespace Cookbook.Controllers
             return Ok(recipe);
         }
 
-        // GET: api/Recipes/search
-        [HttpGet("{name}")]
-        public async Task<IActionResult> SearchRecipe([FromRoute] string search)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        // // GET: api/Recipes/search
+        // [HttpGet("{name}")]
+        // public async Task<IActionResult> SearchRecipe([FromRoute] string search)
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         return BadRequest(ModelState);
+        //     }
 
-            var recipe = await _repository.SearchRecipe(search);
+        //     var recipe = await _repository.SearchRecipe(search);
 
-            if (recipe == null)
-            {
-                return NotFound();
-            }
+        //     if (recipe == null)
+        //     {
+        //         return NotFound();
+        //     }
 
-            return Ok(recipe);
-        }
+        //     return Ok(recipe);
+        // }
     }
 }
