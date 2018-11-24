@@ -3,19 +3,21 @@
         {{ recipeDetails$.category.categoryName }} / {{ recipeDetails$.subcategory.subcategoryName }}
     </div>
     <div class="card-body">
-        <h1 class="card-title font-weight-bold mb-3">{{ recipeDetails$.name }}</h1>
-        <h4><strong class="text-warning">Time:</strong> {{ recipeDetails$.time }} min</h4>
-        <h4><strong class="text-warning">Portions:</strong> {{ recipeDetails$.portion }}</h4>
-        <h4><strong class="text-warning">Rating:</strong> {{ recipeDetails$.rating }}</h4>
 
-        <h3><strong class="text-warning mt-4">Ingredients:</strong></h3>
+        <h1 class="card-title font-weight-bold p-4"><i class="fa fa-cutlery"></i> {{ recipeDetails$.name }}</h1>
+        <h4 *ngIf="recipeDetails$.favourite == true" class="mb-2"><span class="text-danger"><i class="fa fa-heart"></i> Favourite!</span></h4>
+        <h4><strong class="text-warning"><i class="fa fa-clock-o"></i> Time:</strong> {{ recipeDetails$.time }} min</h4>
+        <h4><strong class="text-warning"><i class="fa fa-user"></i> Portions:</strong> {{ recipeDetails$.portion }}</h4>
+        <h4><strong class="text-warning"><i class="fa fa-star"></i> Rating:</strong> {{ recipeDetails$.rating }}</h4>
+
+        <h3><strong class="text-warning mt-4"><i class="fa fa-list-ol"></i> Ingredients:</strong></h3>
         <p>{{recipeDetails$.ingredients}}</p>
-        <h3><strong class="text-warning">Description:</strong></h3>
+        <h3><strong class="text-warning"><i class="fa fa-file-text-o"></i> Description:</strong></h3>
 
         <p class="card-text">{{recipeDetails$.description}}</p>
         <div class="btn-group">
             <a [routerLink]="['/recipes']" class="btn btn-warning rounded">Back to recipes</a>
-            <a class="btn btn-success rounded" (click)="addToFav(recipeDetails$)">Add to favourite</a>
+            <a *ngIf="recipeDetails$.favourite == false" class="btn btn-danger text-light rounded" (click)="addToFav(recipeDetails$)">Add to favourite!</a>
         </div>
     </div>
 </div>

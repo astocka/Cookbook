@@ -7,12 +7,12 @@ import { RecipeService } from '../_services/recipe.service';
   styleUrls: ['./manage-recipes.component.css']
 })
 export class ManageRecipesComponent implements OnInit {
-  recipes$: Object;
+  // recipes$: Object;
 
   constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.recipeService.getRecipes().subscribe(data => (this.recipes$ = data));
+    // this.recipeService.getRecipes().subscribe(data => (this.recipes$ = data));
   }
 
 }
